@@ -8,20 +8,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
+const route = useRoute();
+const { state } = useStore();
+const { item } = route.params;
+export const detail = state.todoListMap[`${item}`];
+
 export default defineComponent({
-  data: () => ({}),
-  setup() {
-    const route = useRoute();
-    const { state } = useStore();
-    const { item } = route.params;
-    const detail = state.todoListMap[`${item}`];
-    return { detail };
-  },
+  name: 'About',
 });
 </script>
 
